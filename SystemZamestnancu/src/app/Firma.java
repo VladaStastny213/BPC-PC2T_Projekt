@@ -9,6 +9,9 @@ public class Firma {
     public Firma() {
         this.zamestnanci = new ArrayList<>();
     }
+    public int getZamestnanecCount() {
+        return zamestnanci.size();
+    }
 
     public void pridejZamestnance(Zamestnanec z) {
         zamestnanci.add(z);
