@@ -6,8 +6,9 @@ public class DatovyAnalytik extends Zamestnanec {
         super(id, jmeno, prijmeni, rokNarozeni);
     }
 
+    
     @Override
     public void provedDovednost() {
-        System.out.println("Analýza společných spolupracovníků (bude dopracováno).");
+    	System.out.println("Analýza sítě: Tento analytik má vazby na " + spolupracovnici.size() + " kolegů.");
     }
 }

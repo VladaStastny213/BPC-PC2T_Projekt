@@ -63,6 +63,7 @@ public class Firma {
         }
     }
 
+    
     public void nactiZeSouboru(String soubor) {
         try (Scanner s = new Scanner(new File(soubor))) {
             zamestnanci.clear();

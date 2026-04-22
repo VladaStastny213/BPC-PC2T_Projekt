@@ -6,8 +6,10 @@ public class BezpecnostniSpecialista extends Zamestnanec {
         super(id, jmeno, prijmeni, rokNarozeni);
     }
 
+    
     @Override
     public void provedDovednost() {
-        System.out.println("Výpočet rizikového skóre (bude dopracováno).");
+        String status = (getRizikoveSkore() > 2.5) ? "KRITICKÉ" : "STABILNÍ";
+        System.out.println("Bezpečnostní audit: Stav zaměstnance je " + status + ".");
     }
 }

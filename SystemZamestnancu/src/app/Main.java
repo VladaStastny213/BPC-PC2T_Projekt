@@ -82,6 +82,7 @@ public class Main {
                     }
                     break;
 
+                    
                 case 0:
                     bezi = false;
                     System.out.println("Program ukončen.");

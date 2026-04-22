@@ -30,6 +30,7 @@ public abstract class Zamestnanec {
     public void pridejSpolupracovnika(int idKolegy, int uroven) {
         spolupracovnici.put(idKolegy, uroven);
     }
+    
     public double getRizikoveSkore() {
         if (spolupracovnici.isEmpty()) {
             return 0;
