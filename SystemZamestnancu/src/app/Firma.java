@@ -9,6 +9,19 @@ public class Firma {
     public Firma() {
         this.zamestnanci = new ArrayList<>();
     }
+    
+    public boolean pridejVazbu(int id1, int id2, int uroven) {
+        Zamestnanec z1 = najdiZamestnance(id1);
+        Zamestnanec z2 = najdiZamestnance(id2);
+        
+        if (z1 != null && z2 != null && id1 != id2) {
+            z1.pridejSpolupracovnika(id2, uroven);
+            z2.pridejSpolupracovnika(id1, uroven);
+            return true;
+        }
+        return false;
+    }
+    
     public int getZamestnanecCount() {
         return zamestnanci.size();
     }

@@ -30,4 +30,10 @@ public abstract class Zamestnanec {
     public void pridejSpolupracovnika(int idKolegy, int uroven) {
         spolupracovnici.put(idKolegy, uroven);
     }
+    
+    @Override
+    public String toString() {
+        return String.format("ID: %d | %s %s (%d) | Počet kolegů: %d", 
+            id, jmeno, prijmeni, rokNarozeni, spolupracovnici.size());
+    }
 }
