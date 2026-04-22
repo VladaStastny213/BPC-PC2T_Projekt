@@ -5,6 +5,7 @@ import java.util.Scanner;
 public class Main {
     public static void main(String[] args) {
         Firma firma = new Firma();
+        firma.nactiZeSouboru("data.txt");
         Scanner scanner = new Scanner(System.in);
         boolean bezi = true;
 
@@ -16,6 +17,7 @@ public class Main {
             System.out.println("3 - Přidat spolupráci (vazbu)");
             System.out.println("4 - Smazat zaměstnance");
             System.out.println("5 - Vypsat vše");
+            System.out.println("6 - Analýza rizikovosti");
             System.out.println("0 - Konec");
             System.out.print("Volba: ");
             
@@ -29,11 +31,11 @@ public class Main {
                     System.out.print("Jméno: "); String j = scanner.nextLine();
                     System.out.print("Příjmení: "); String p = scanner.nextLine();
                     System.out.print("Rok: "); int r = scanner.nextInt();
-                    // ID se generuje automaticky
                     int id = firma.getZamestnanecCount() + 1;
                     if (typ == 1) firma.pridejZamestnance(new DatovyAnalytik(id, j, p, r));
                     else firma.pridejZamestnance(new BezpecnostniSpecialista(id, j, p, r));
                     System.out.println("Přidáno s ID " + id);
+                    firma.ulozDoSouboru("data.txt");
                     break;
 
                 case 2:
@@ -48,22 +50,35 @@ public class Main {
                 case 3:
                     System.out.print("ID prvního: "); int id1 = scanner.nextInt();
                     System.out.print("ID druhého: "); int id2 = scanner.nextInt();
-                    System.out.print("Úroveň (1-špatná, 2-průměrná, 3-dobrá): ");
+                    System.out.print("Úroveň (1-3): ");
                     int u = scanner.nextInt();
-                    if (firma.pridejVazbu(id1, id2, u)) System.out.println("Vazba uložena.");
-                    else System.out.println("Chyba: ID neexistují nebo jsou stejná.");
+                    
+                    if (firma.pridejVazbu(id1, id2, u)) {
+                        System.out.println("Vazba uložena.");
+                        firma.ulozDoSouboru("data.txt");
+                    } else {
+                        System.out.println("Chyba: ID neexistují nebo jsou stejná.");
+                    }
                     break;
 
                 case 4:
                     System.out.print("ID ke smazání: ");
                     if (firma.smazZamestnance(scanner.nextInt())) System.out.println("Zaměstnanec smazán.");
                     else System.out.println("ID neexistuje.");
+                    firma.ulozDoSouboru("data.txt");
                     break;
                
                 case 5:
                     System.out.println("--- Seznam všech zaměstnanců ---");
                     for (Zamestnanec zam : firma.getZamestnanci()) {
                         System.out.println(zam.toString());
+                    }
+                    break;
+                    
+                case 6:
+                    System.out.println("--- Analýza rizikovosti ---");
+                    for (Zamestnanec zam : firma.getZamestnanci()) {
+                        System.out.println(zam.getJmeno() + " " + zam.getPrijmeni() + ": " + zam.getRizikoveSkore());
                     }
                     break;
 

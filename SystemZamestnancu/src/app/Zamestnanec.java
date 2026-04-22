@@ -30,10 +30,20 @@ public abstract class Zamestnanec {
     public void pridejSpolupracovnika(int idKolegy, int uroven) {
         spolupracovnici.put(idKolegy, uroven);
     }
+    public double getRizikoveSkore() {
+        if (spolupracovnici.isEmpty()) {
+            return 0;
+        }
+        double suma = 0;
+        for (int uroven : spolupracovnici.values()) {
+            suma += uroven;
+        }
+        return suma / spolupracovnici.size();
+    }
     
     @Override
     public String toString() {
-        return String.format("ID: %d | %s %s (%d) | Počet kolegů: %d", 
-            id, jmeno, prijmeni, rokNarozeni, spolupracovnici.size());
+    	return String.format("ID: %d | %s %s (%d) | Kolegů: %d | Riziko: %.2f", 
+    	        id, jmeno, prijmeni, rokNarozeni, spolupracovnici.size(), getRizikoveSkore());
     }
 }
