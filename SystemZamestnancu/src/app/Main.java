@@ -38,7 +38,7 @@ public class Main {
                     break;
 
                 case 2:
-                    System.out.print("yadejte ID: ");
+                    System.out.print("zadejte ID: ");
                     Zamestnanec z = firma.najdiZamestnance(scanner.nextInt());
                     if (z != null) {
                         System.out.println("nalezen: " + z.getJmeno() + " " + z.getPrijmeni());
