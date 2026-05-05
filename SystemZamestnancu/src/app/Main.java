@@ -6,7 +6,7 @@ public class Main {
 	
 	public static void main(String[] args) {
         Firma firma = new Firma();
-        firma.nactiZeSouboru("data.txt");
+        firma.nacteni("data.txt");
         Scanner scanner = new Scanner(System.in);
         boolean bezi = true;
 
@@ -28,21 +28,21 @@ public class Main {
         switch (volba) {
         case 1:
                   System.out.print("1-Analytik, 2-Specialista: ");
-        int typ = scanner.nextInt(); scanner.nextLine();
+                  int typ = scanner.nextInt(); scanner.nextLine();
                     
                   System.out.print("jmeno: "); String j = scanner.nextLine();
                   System.out.print("prijmeni: "); String p = scanner.nextLine();
                   System.out.print("rok: "); int r = scanner.nextInt();
                     
-        int id = firma.getZamestnanecCount() + 1;
-        if (typ == 1) firma.pridejZamestnance(new DatovyAnalytik(id, j, p, r));
+                  int id = firma.getZamestnanecCount() + 1;
+                  if (typ == 1) firma.pridejZamestnance(new DatovyAnalytik(id, j, p, r));
 
-        else firma.pridejZamestnance(new BezpecnostniSpecialista(id, j, p, r));
+                  else firma.pridejZamestnance(new BezpecnostniSpecialista(id, j, p, r));
                     
                   System.out.println("pridano s ID " + id);
                     
-                  firma.ulozDoSouboru("data.txt");
-                    break;
+                  firma.ulozeni("data.txt");
+                  break;
                   
         case 2:
                   System.out.print("zadejte ID: ");
@@ -60,29 +60,29 @@ public class Main {
                   int u = scanner.nextInt();
                     
                   if (firma.pridejVazbu(id1, id2, u)) {
-                      System.out.println("vazba byla ulozena.");
-                      firma.ulozDoSouboru("data.txt");
-                  } else {
-                        System.out.println("ERROR: ID neexistuje nebo jsou zadane ID stejna");
+                      System.out.println("vazba byla ulozena");
+                      firma.ulozeni("data.txt");
+                  	  } else {
+                      System.out.println("ERROR: ID neexistuje nebo jsou zadane ID stejna");
                   }
                   break;
 
         case 4:
                   System.out.print("ID ke smazani: ");
-                  if (firma.smazZamestnance(scanner.nextInt())) System.out.println("Zaměstnanec smazán.");
-                  else System.out.println("ID neexistuje.");
-                  firma.ulozDoSouboru("data.txt");
+                  if (firma.smazZamestnance(scanner.nextInt())) System.out.println("zamestnanec byl smazan");
+                  else System.out.println("ID neexistuje");
+                  firma.ulozeni("data.txt");
                   break;
                
         case 5:
-                  System.out.println("--- Seznam všech zaměstnanců ---");
+                  System.out.println(" seznam vsech zamestnancu ");
                   for (Zamestnanec zam : firma.getZamestnanci()) {
                   System.out.println(zam.toString());
                   }
                   break;
-                    
+
         case 6:
-                  System.out.println("--- Analýza rizikovosti ---");
+                  System.out.println(" analyza rizikovosti ");
                   for (Zamestnanec zam : firma.getZamestnanci()) {
                   System.out.println(zam.getJmeno() + " " + zam.getPrijmeni() + ": " + zam.getRizikoveSkore());
                   }
@@ -91,11 +91,11 @@ public class Main {
                     
         case 0:
                   bezi = false;
-                  System.out.println("Program ukončen.");
+                  System.out.println("program ukoncen");
                   break;
                     
         default:
-                  System.out.println("Neplatná volba.");
+                  System.out.println("neplatna volba");
             }
         }
         scanner.close();

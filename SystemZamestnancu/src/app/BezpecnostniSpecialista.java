@@ -2,8 +2,8 @@ package app;
 
 public class BezpecnostniSpecialista extends Zamestnanec {
 
-    public BezpecnostniSpecialista(int id, String jmeno, String prijmeni, int rokNarozeni) {
-        super(id, jmeno, prijmeni, rokNarozeni);
+    public BezpecnostniSpecialista(int id, String jmeno, String prijmeni, int roknarozeni) {
+        super(id, jmeno, prijmeni, roknarozeni);
     }
 
     

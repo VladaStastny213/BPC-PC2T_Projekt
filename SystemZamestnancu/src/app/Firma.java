@@ -52,7 +52,7 @@ public class Firma {
         return zamestnanci;
     }
     
-    public void ulozDoSouboru(String soubor) {
+    public void ulozeni(String soubor) {
         try (PrintWriter pw = new PrintWriter(new FileWriter(soubor))) {
             for (Zamestnanec z : zamestnanci) {
                 String typ = (z instanceof DatovyAnalytik) ? "A" : "S";
@@ -64,17 +64,17 @@ public class Firma {
     }
 
     
-    public void nactiZeSouboru(String soubor) {
+    public void nacteni(String soubor) {
         try (Scanner s = new Scanner(new File(soubor))) {
             zamestnanci.clear();
             while (s.hasNextLine()) {
-                String[] casti = s.nextLine().split(";");
-                int id = Integer.parseInt(casti[1]);
-                String jm = casti[2];
-                String pr = casti[3];
-                int rok = Integer.parseInt(casti[4]);
+                String[] data = s.nextLine().split(";");
+                int id = Integer.parseInt(data[1]);
+                String jm = data[2];
+                String pr = data[3];
+                int rok = Integer.parseInt(data[4]);
                 
-                if (casti[0].equals("A")) pridejZamestnance(new DatovyAnalytik(id, jm, pr, rok));
+                if (data[0].equals("A")) pridejZamestnance(new DatovyAnalytik(id, jm, pr, rok));
                 else pridejZamestnance(new BezpecnostniSpecialista(id, jm, pr, rok));
             }
         } catch (FileNotFoundException e) {
