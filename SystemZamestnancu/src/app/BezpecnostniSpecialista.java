@@ -9,7 +9,7 @@ public class BezpecnostniSpecialista extends Zamestnanec {
     
     @Override
     public void provedDovednost() {
-        String status = (getRizikoveSkore() > 2.5) ? "KRITICKÉ" : "STABILNÍ";
-        System.out.println("Bezpečnostní audit: Stav zaměstnance je " + status + ".");
+        String status = (getRizikoveSkore() > 2.5) ? "KRITICKE" : "STABILNI";
+        System.out.println(" stav zamestnance je " + status + ".");
     }
 }
